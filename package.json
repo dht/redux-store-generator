@@ -1,6 +1,6 @@
 {
     "name": "redux-store-generator",
-    "version": "0.9.60",
+    "version": "0.9.61",
     "description": "auto-generates a redux store",
     "license": "MIT",
     "main": "lib/index.js",
@@ -9,7 +9,7 @@
         "start": "npm link",
         "test": "jest",
         "clean": "rm -rf lib/*",
-        "build": "npm run clean && tsc --project tsconfig.json --extendedDiagnostics",
+        "build": "npm run clean && tsc",
         "watch": "nodemon -x \"npm run build\"",
         "analyze": "source-map-explorer 'lib/*.js'  --no-border-checks"
     },

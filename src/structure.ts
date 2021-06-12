@@ -34,6 +34,8 @@ export const nodeToType = (value: StoreNode) => {
     } else if (isSingleNode(value)) {
         return NodeType.SINGLE_NODE;
     }
+
+    return undefined;
 };
 
 export const analyzeStructure = (json: Json): StoreNodeTypes => {

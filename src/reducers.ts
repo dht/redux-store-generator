@@ -51,6 +51,8 @@ export const generateCollection = (nodeName: string) => {
                     ...state,
                     ...action.payload,
                 };
+            default:
+                return state;
         }
     };
 
@@ -130,6 +132,8 @@ export const generateGroupedList = (nodeName: string) => {
                     ...state,
                     items: listItems(state.items, action),
                 };
+            default:
+                return state;
         }
     };
 

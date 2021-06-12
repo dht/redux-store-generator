@@ -1,6 +1,9 @@
-export { generateActionTypesDictionaryForStore } from './actionTypes';
-export { generateActionsForStore } from './actions';
-export { generateReducersForStore } from './reducers';
+export {
+    generateActionTypesDictionaryForStore,
+    generateActionTypesForStore,
+} from './actionTypes';
+export { generateActionsForStore, collection_all, single_all } from './actions';
+export { generateReducersForStore, generateSingle } from './reducers';
 export { nodeToType } from './structure';
 
 export {
@@ -31,3 +34,4 @@ export {
 
 export { analyzeStructure } from './structure';
 export { cleanInitialState } from './initialState';
+export { toSingularAction } from './singular';

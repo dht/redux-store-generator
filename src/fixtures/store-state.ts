@@ -1,4 +1,4 @@
-import { GroupedListNode, StoreStructure } from '../types/types';
+import { StoreStructure } from '../types/types';
 
 export type AppState = { isLoading: boolean; email?: string };
 export type Product = { id: string; title: string };

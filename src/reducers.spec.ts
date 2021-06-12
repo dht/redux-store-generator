@@ -1,6 +1,5 @@
-import { GroupedListBag } from './types/types';
 import { generateActionsForStore } from './actions';
-import storeState, { Chat } from './fixtures/store-state';
+import storeState from './fixtures/store-state';
 import {
     generateSingle,
     generateQueue,

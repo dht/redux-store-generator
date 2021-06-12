@@ -17,10 +17,9 @@ export interface MyStore extends StoreStructure {
     chats: Chats;
 }
 
-export default {
+export const state: MyStore = {
     appState: {
         isLoading: true,
-        isSaving: true,
     },
     products: {
         '1': {
@@ -41,8 +40,12 @@ export default {
                 {
                     id: '1',
                     isMe: true,
+                    content: '',
+                    timestamp: 0,
                 },
             ],
         },
     },
 };
+
+export default state;

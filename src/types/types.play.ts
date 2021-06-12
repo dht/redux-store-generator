@@ -1,9 +1,9 @@
-import { MyStore } from '../fixtures/store-state';
-import { StoreActions, StoreNodesKeys } from './types';
+// import { MyStore } from '../fixtures/store-state';
+// import { StoreActions, StoreNodesKeys } from './types';
 
-type MyActions = StoreActions<MyStore>;
+// type MyActions = StoreActions<MyStore>;
 
-let x: MyActions = {} as MyActions;
+// let x: MyActions = {} as MyActions;
 
 // ============ OK =============
 // x.appState.patch({ isLoading: false });

@@ -4,7 +4,7 @@ export {
 } from './actionTypes';
 export { generateActionsForStore, collection_all, single_all } from './actions';
 export { generateReducersForStore, generateSingle } from './reducers';
-export { nodeToType } from './structure';
+export { nodeToType, clearNodes } from './structure';
 
 export {
     ApiInfo,

@@ -47,3 +47,13 @@ export const analyzeStructure = (json: Json): StoreNodeTypes => {
         return output;
     }, memo);
 };
+
+export const clearNodes = (json: Json, nodes: string[]) => {
+    // generating a new object for immutability sake
+    return Object.keys(json)
+        .filter((key) => !nodes.includes(key))
+        .reduce((output: Json, key: string) => {
+            output[key] = json[key];
+            return output;
+        }, {});
+};

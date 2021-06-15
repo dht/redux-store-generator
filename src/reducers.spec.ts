@@ -197,7 +197,11 @@ describe('reducers', () => {
         action = actions.set('2', { id: '2', title: title1 });
         nextState = reducer(chats, action);
         expect(nextState).toEqual({
-            '1': { id: '1', title: 'chat 1', items: [{ id: '1', isMe: true }] },
+            '1': {
+                id: '1',
+                title: 'chat 1',
+                items: [{ id: '1', isMe: true, content: '', timestamp: 0 }],
+            },
             '2': { id: '2', title: title1 },
         });
 
@@ -205,7 +209,11 @@ describe('reducers', () => {
         action = actions.patch('1', { title: title1 });
         nextState = reducer(chats, action);
         expect(nextState).toEqual({
-            '1': { id: '1', items: [{ id: '1', isMe: true }], title: title1 },
+            '1': {
+                id: '1',
+                items: [{ id: '1', isMe: true, content: '', timestamp: 0 }],
+                title: title1,
+            },
         });
 
         // patch no id
@@ -231,7 +239,11 @@ describe('reducers', () => {
 
         nextState = reducer(chats, action);
         expect(nextState).toEqual({
-            '1': { id: '1', title: 'chat 1', items: [{ id: '1', isMe: true }] },
+            '1': {
+                id: '1',
+                title: 'chat 1',
+                items: [{ id: '1', isMe: true, content: '', timestamp: 0 }],
+            },
             '2': { id: '2', title: title1, items: [] },
             '3': { id: '3', title: title2, items: [] },
         });
@@ -292,7 +304,7 @@ describe('reducers', () => {
                 id: '1',
                 title: 'chat 1',
                 items: [
-                    { id: '1', isMe: true },
+                    { id: '1', isMe: true, content: '', timestamp: 0 },
                     { id: '3', isMe: true },
                 ],
             },
@@ -344,7 +356,7 @@ describe('reducers', () => {
                 id: '1',
                 title: 'chat 1',
                 items: [
-                    { id: '1', isMe: true },
+                    { id: '1', isMe: true, content: '', timestamp: 0 },
                     { id: '3', isMe: false },
                     { id: '4', isMe: true },
                 ],

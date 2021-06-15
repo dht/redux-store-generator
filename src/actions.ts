@@ -17,25 +17,23 @@ export const SIGNATURE = {
 };
 
 // ============== single ==============
-export const single_patchAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `PATCH_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
+export const single_patchAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `PATCH_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
-export const single_setAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `SET_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
+export const single_setAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `SET_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
 export const single_getAction = (nodeName: string, extra?: Json) => () => {
     return {
@@ -53,47 +51,44 @@ export const single_all = <T>(nodeName: string, extra?: Json): SingleBag<T> => {
 };
 
 // ============== queue ==============
-export const queue_getAction = (nodeName: string, extra?: Json) => (
-    payload: Json = {}
-) => {
-    return {
-        type: `GET_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
+export const queue_getAction =
+    (nodeName: string, extra?: Json) =>
+    (payload: Json = {}) => {
+        return {
+            type: `GET_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
-export const queue_setAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `SET_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
+export const queue_setAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `SET_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
-export const queue_pushAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `PUSH_${toSingularAction(nodeName)}`,
-        payload,
-        ...extra,
+export const queue_pushAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `PUSH_${toSingularAction(nodeName)}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
-export const queue_pushManyAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `PUSH_MANY_${nodeName.toUpperCase()}`,
-        payload: {
-            items: payload,
-        },
-        ...extra,
+export const queue_pushManyAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `PUSH_MANY_${nodeName.toUpperCase()}`,
+            payload: {
+                items: payload,
+            },
+            ...extra,
+        };
     };
-};
 
 export const queue_popAction = (nodeName: string, extra?: Json) => () => {
     return {
@@ -121,87 +116,79 @@ export const queue_all = <T>(nodeName: string, extra?: Json): QueueBag<T> => {
 };
 
 // ============== collection ==============
-export const collection_getAction = (nodeName: string, extra?: Json) => (
-    payload: Json = {}
-) => {
-    return {
-        type: `GET_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
+export const collection_getAction =
+    (nodeName: string, extra?: Json) =>
+    (payload: Json = {}) => {
+        return {
+            type: `GET_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
-export const collection_setAllAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `SET_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
+export const collection_setAllAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `SET_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
-export const collection_addAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `ADD_${toSingularAction(nodeName)}`,
-        payload: {
-            ...payload,
-        },
-        ...extra,
+export const collection_addAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `ADD_${toSingularAction(nodeName)}`,
+            payload: {
+                ...payload,
+            },
+            ...extra,
+        };
     };
-};
 
-export const collection_setAction = (nodeName: string, extra?: Json) => (
-    id: string,
-    payload: Json
-) => {
-    return {
-        type: `SET_${toSingularAction(nodeName)}`,
-        payload: {
-            id,
-            ...payload,
-        },
-        ...extra,
+export const collection_setAction =
+    (nodeName: string, extra?: Json) => (id: string, payload: Json) => {
+        return {
+            type: `SET_${toSingularAction(nodeName)}`,
+            payload: {
+                id,
+                ...payload,
+            },
+            ...extra,
+        };
     };
-};
 
-export const collection_patchAction = (nodeName: string, extra?: Json) => (
-    id: string,
-    payload: Json
-) => {
-    return {
-        type: `PATCH_${toSingularAction(nodeName)}`,
-        payload: {
-            id,
-            ...payload,
-        },
-        ...extra,
+export const collection_patchAction =
+    (nodeName: string, extra?: Json) => (id: string, payload: Json) => {
+        return {
+            type: `PATCH_${toSingularAction(nodeName)}`,
+            payload: {
+                id,
+                ...payload,
+            },
+            ...extra,
+        };
     };
-};
 
-export const collection_deleteAction = (nodeName: string, extra?: Json) => (
-    id: string
-) => {
-    return {
-        type: `DELETE_${toSingularAction(nodeName)}`,
-        payload: {
-            id,
-        },
-        ...extra,
+export const collection_deleteAction =
+    (nodeName: string, extra?: Json) => (id: string) => {
+        return {
+            type: `DELETE_${toSingularAction(nodeName)}`,
+            payload: {
+                id,
+            },
+            ...extra,
+        };
     };
-};
 
-export const collection_setManyAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `SET_MANY_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
+export const collection_setManyAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `SET_MANY_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
 export const collection_all = <T>(
     nodeName: string,
@@ -219,169 +206,151 @@ export const collection_all = <T>(
 };
 
 // ============== grouped list ==============
-export const groupedList_getAction = (nodeName: string, extra?: Json) => (
-    payload: Json = {}
-) => {
-    return {
-        type: `GET_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
+export const groupedList_getAction =
+    (nodeName: string, extra?: Json) =>
+    (payload: Json = {}) => {
+        return {
+            type: `GET_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
-export const groupedList_setAllAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `SET_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
+export const groupedList_setAllAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `SET_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
     };
-};
 
-export const groupedList_addAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `ADD_${toSingularAction(nodeName)}`,
-        payload: {
-            ...payload,
-        },
-        ...extra,
-    };
-};
-
-export const groupedList_setAction = (nodeName: string, extra?: Json) => (
-    id: string,
-    payload: Json
-) => {
-    return {
-        type: `SET_${toSingularAction(nodeName)}`,
-        payload: {
-            id,
-            ...payload,
-        },
-        ...extra,
-    };
-};
-
-export const groupedList_patchAction = (nodeName: string, extra?: Json) => (
-    id: string,
-    payload: Json
-) => {
-    return {
-        type: `PATCH_${toSingularAction(nodeName)}`,
-        payload: {
-            id,
-            ...payload,
-        },
-        ...extra,
-    };
-};
-
-export const groupedList_deleteAction = (nodeName: string, extra?: Json) => (
-    id: string
-) => {
-    return {
-        type: `DELETE_${toSingularAction(nodeName)}`,
-        payload: {
-            id,
-        },
-        ...extra,
-    };
-};
-
-export const groupedList_setManyAction = (nodeName: string, extra?: Json) => (
-    payload: Json
-) => {
-    return {
-        type: `SET_MANY_${nodeName.toUpperCase()}`,
-        payload,
-        ...extra,
-    };
-};
-
-export const groupedList_getItems = (nodeName: string, extra?: Json) => (
-    id: string,
-    payload: Json
-) => {
-    return {
-        type: `GET_${nodeName.toUpperCase()}_ITEMS`,
-        payload: {
-            id,
-            ...payload,
-        },
-        ...extra,
-    };
-};
-
-export const groupedList_setItems = (nodeName: string, extra?: Json) => (
-    id: string,
-    payload: Json[]
-) => {
-    return {
-        type: `SET_${nodeName.toUpperCase()}_ITEMS`,
-        payload: {
-            id,
+export const groupedList_addAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `ADD_${toSingularAction(nodeName)}`,
             payload: {
+                ...payload,
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_setAction =
+    (nodeName: string, extra?: Json) => (id: string, payload: Json) => {
+        return {
+            type: `SET_${toSingularAction(nodeName)}`,
+            payload: {
+                id,
+                ...payload,
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_patchAction =
+    (nodeName: string, extra?: Json) => (id: string, payload: Json) => {
+        return {
+            type: `PATCH_${toSingularAction(nodeName)}`,
+            payload: {
+                id,
+                ...payload,
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_deleteAction =
+    (nodeName: string, extra?: Json) => (id: string) => {
+        return {
+            type: `DELETE_${toSingularAction(nodeName)}`,
+            payload: {
+                id,
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_setManyAction =
+    (nodeName: string, extra?: Json) => (payload: Json) => {
+        return {
+            type: `SET_MANY_${nodeName.toUpperCase()}`,
+            payload,
+            ...extra,
+        };
+    };
+
+export const groupedList_getItems =
+    (nodeName: string, extra?: Json) => (id: string, payload: Json) => {
+        return {
+            type: `GET_${nodeName.toUpperCase()}_ITEMS`,
+            payload: {
+                id,
+                ...payload,
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_setItems =
+    (nodeName: string, extra?: Json) => (id: string, payload: Json[]) => {
+        return {
+            type: `SET_${nodeName.toUpperCase()}_ITEMS`,
+            payload: {
+                id,
+                payload: {
+                    items: payload,
+                },
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_pushItem =
+    (nodeName: string, extra?: Json) => (id: string, payload: Json) => {
+        return {
+            type: `PUSH_${nodeName.toUpperCase()}_ITEM`,
+            payload: {
+                id,
+                items: [payload],
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_popItem =
+    (nodeName: string, extra?: Json) => (id: string) => {
+        return {
+            type: `POP_${nodeName.toUpperCase()}_ITEM`,
+            payload: {
+                id,
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_clearItems =
+    (nodeName: string, extra?: Json) => (id: string) => {
+        return {
+            type: `CLEAR_${nodeName.toUpperCase()}_ITEMS`,
+            payload: {
+                id,
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_pushManyItems =
+    (nodeName: string, extra?: Json) => (id: string, payload: Json[]) => {
+        return {
+            type: `PUSH_MANY_${nodeName.toUpperCase()}_ITEMS`,
+            payload: {
+                id,
                 items: payload,
             },
-        },
-        ...extra,
+            ...extra,
+        };
     };
-};
-
-export const groupedList_pushItem = (nodeName: string, extra?: Json) => (
-    id: string,
-    payload: Json
-) => {
-    return {
-        type: `PUSH_${nodeName.toUpperCase()}_ITEM`,
-        payload: {
-            id,
-            ...payload,
-        },
-        ...extra,
-    };
-};
-
-export const groupedList_popItem = (nodeName: string, extra?: Json) => (
-    id: string
-) => {
-    return {
-        type: `POP_${nodeName.toUpperCase()}_ITEM`,
-        payload: {
-            id,
-        },
-        ...extra,
-    };
-};
-
-export const groupedList_clearItems = (nodeName: string, extra?: Json) => (
-    id: string
-) => {
-    return {
-        type: `CLEAR_${nodeName.toUpperCase()}_ITEMS`,
-        payload: {
-            id,
-        },
-        ...extra,
-    };
-};
-
-export const groupedList_pushManyItems = (nodeName: string, extra?: Json) => (
-    id: string,
-    payload: Json[]
-) => {
-    return {
-        type: `PUSH_MANY_${nodeName.toUpperCase()}_ITEMS`,
-        payload: {
-            id,
-            items: payload,
-        },
-        ...extra,
-    };
-};
 
 export const groupedList_all = <T>(
     nodeName: string,

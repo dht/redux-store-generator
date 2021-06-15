@@ -4,6 +4,7 @@ import {
     generateActionTypesDictionaryForStore,
     queue_actionTypes,
     single_actionTypes,
+    groupedList_actionTypes,
 } from './actionTypes';
 import myStore from './fixtures/store-state';
 
@@ -37,6 +38,24 @@ describe('api', () => {
             patch: 'PATCH_PRODUCT',
             set: 'SET_PRODUCT',
             setAll: 'SET_PRODUCTS',
+        });
+    });
+
+    it('should generate actionTypes for groupedList', () => {
+        const result = groupedList_actionTypes('chats');
+        expect(result).toEqual({
+            add: 'ADD_CHAT',
+            clearItems: 'CLEAR_CHATS_ITEMS',
+            delete: 'DELETE_CHAT',
+            get: 'GET_CHATS',
+            getItems: 'GET_CHATS_ITEMS',
+            patch: 'PATCH_CHAT',
+            popItem: 'POP_CHATS_ITEM',
+            pushItem: 'PUSH_CHATS_ITEM',
+            pushManyItems: 'PUSH_MANY_CHATS_ITEMS',
+            set: 'SET_CHAT',
+            setAll: 'SET_CHATS',
+            setItems: 'SET_CHATS_ITEMS',
         });
     });
 

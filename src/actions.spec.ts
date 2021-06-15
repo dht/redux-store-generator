@@ -349,7 +349,8 @@ describe('action creators', () => {
             expect(action).toEqual({
                 type: 'PUSH_CHATS_ITEM',
                 payload: {
-                    ...payload,
+                    id,
+                    items: [payload],
                 },
             });
         });

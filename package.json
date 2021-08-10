@@ -1,6 +1,6 @@
 {
     "name": "redux-store-generator",
-    "version": "0.9.66",
+    "version": "0.9.71",
     "description": "auto-generates a redux store",
     "license": "MIT",
     "main": "lib/index.js",
@@ -27,7 +27,6 @@
         "registry": "https://registry.npmjs.org/"
     },
     "author": "",
-    "dependencies": {},
     "devDependencies": {
         "@jest/types": "^26.6.2",
         "@types/chance": "^1.1.1",

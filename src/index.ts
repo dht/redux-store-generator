@@ -8,7 +8,9 @@ export { nodeToType, analyzeStructure, clearNodes } from './structure';
 export { cleanInitialState } from './initialState';
 export { toSingularAction } from './singular';
 
-export {
+export { NodeType } from './types/types';
+
+export type {
     ApiInfo,
     ApiInfoPerType,
     ApiVerb,
@@ -22,7 +24,6 @@ export {
     CollectionNode,
     Item,
     Json,
-    NodeType,
     SingleBag,
     SingleNode,
     StoreNode,

@@ -21,11 +21,11 @@
     },
     "include": ["src", "test"],
     "exclude": [
-        "node_modules",
+        "node_modules/**/*",
+        "lib/**/*",
+        "esm/**/*",
         "types/types.play.ts",
         "**/*.spec.ts",
-        "lib",
-        "esm",
         "jest.config.ts"
     ]
 }

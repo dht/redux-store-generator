@@ -1,4 +1,4 @@
-import { cleanInitialState, isCollectionNodeBlank } from './initialState';
+import { isCollectionNodeBlank } from './initialState';
 
 describe('initialState', () => {
     it('should check if collectionNode is blank', () => {
@@ -29,17 +29,5 @@ describe('initialState', () => {
         };
 
         expect(isCollectionNodeBlank(nodeMany)).toBe(false);
-    });
-
-    it('should clean a blank collectionNode', () => {
-        const nodeBlank = {
-            products: {
-                '1': {
-                    id: '1',
-                },
-            },
-        };
-
-        expect(cleanInitialState(nodeBlank)).toEqual({ products: {} });
     });
 });

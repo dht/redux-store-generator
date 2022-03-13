@@ -352,10 +352,10 @@ export const groupedList_pushManyItems =
         };
     };
 
-export const groupedList_all = <T>(
+export const groupedList_all = <T, V>(
     nodeName: string,
     extra?: Json
-): GroupedListBag<T> => {
+): GroupedListBag<T, V> => {
     return {
         get: groupedList_getAction(nodeName, extra),
         setAll: groupedList_setAllAction(nodeName, extra),

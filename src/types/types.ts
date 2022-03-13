@@ -67,7 +67,7 @@ export type CollectionBag<T> = {
     setMany: ActionCreatorPayload<Record<string, T>>;
 };
 
-export type GroupedListBag<T> = {
+export type GroupedListBag<T, V> = {
     get: ActionCreatorPayload<Record<string, any>>;
     setAll: ActionCreatorPayload<Record<string, T>>;
     add: ActionCreatorPayload<Partial<T>>;
@@ -77,18 +77,18 @@ export type GroupedListBag<T> = {
     setMany: ActionCreatorPayload<Record<string, T>>;
 
     getItems: ActionCreatorIdAndPayload<Record<string, any>>;
-    setItems: ActionCreatorIdAndPayload<T[]>;
-    pushItem: ActionCreatorIdAndPayload<T>;
+    setItems: ActionCreatorIdAndPayload<V[]>;
+    pushItem: ActionCreatorIdAndPayload<V>;
     popItem: ActionCreatorId;
     clearItems: ActionCreatorId;
-    pushManyItems: ActionCreatorIdAndPayload<T[]>;
+    pushManyItems: ActionCreatorIdAndPayload<V[]>;
 };
 
 export type ActionBag =
     | SingleBag<any>
     | QueueBag<any>
     | CollectionBag<any>
-    | GroupedListBag<any>;
+    | GroupedListBag<any, any>;
 
 type InferArrayType<T> = T extends Array<infer P> ? P : never;
 type InferCollectionType<T> = T extends Record<string, infer P> ? P : never;
@@ -98,7 +98,7 @@ export type StoreActions<StoreStructure> = {
     [K in keyof StoreStructure]: StoreStructure[K] extends QueueNode
         ? QueueBag<InferArrayType<StoreStructure[K]>>
         : StoreStructure[K] extends GroupedListNode
-        ? GroupedListBag<InferGroupedListType<StoreStructure[K]>>
+        ? GroupedListBag<InferGroupedListType<StoreStructure[K]>, any>
         : StoreStructure[K] extends CollectionNode
         ? CollectionBag<InferCollectionType<StoreStructure[K]>>
         : SingleBag<StoreStructure[K]>;
@@ -181,6 +181,7 @@ export type ApiVerb =
     | 'pushManyItems';
 
 export interface ApiInfo {
+    id: string;
     verb: ApiVerb;
     nodeName: string;
     isLocal?: boolean;

@@ -1,6 +1,6 @@
 {
     "name": "redux-store-generator",
-    "version": "0.9.71",
+    "version": "0.9.74",
     "description": "auto-generates a redux store",
     "license": "MIT",
     "main": "lib/index.js",
@@ -37,7 +37,7 @@
         "lint-staged": "^10.5.4",
         "source-map-explorer": "^2.5.2",
         "ts-jest": "^26.5.0",
-        "tslib": "^2.2.0",
+        "tslib": "^2.3.1",
         "typescript": "^4.2.3"
     },
     "husky": {

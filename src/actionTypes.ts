@@ -126,6 +126,7 @@ export const generateActionTypesDictionaryForStore = <T extends StoreStructure>(
         Object.keys(bag).forEach((apiVerb: any) => {
             const actionType = bag[apiVerb];
             output[actionType] = {
+                id: actionType,
                 verb: apiVerb,
                 nodeName,
             } as ApiInfo;

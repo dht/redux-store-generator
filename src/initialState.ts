@@ -1,23 +1,4 @@
-import { analyzeStructure } from './structure';
-import { NodeType, StoreStructure, CollectionNode } from './types/types';
-
-export const cleanInitialState = (state: StoreStructure): StoreStructure => {
-    let output = { ...state };
-
-    const nodeTypes = analyzeStructure(state);
-
-    Object.keys(nodeTypes).forEach((nodeName) => {
-        const nodeType = nodeTypes[nodeName];
-
-        if (nodeType === NodeType.COLLECTION_NODE) {
-            if (isCollectionNodeBlank(state[nodeName] as CollectionNode)) {
-                output[nodeName] = {};
-            }
-        }
-    });
-
-    return output;
-};
+import { CollectionNode } from './types/types';
 
 export const isCollectionNodeBlank = (collectionNode: CollectionNode) => {
     const values = Object.values(collectionNode);

@@ -5,7 +5,6 @@ export {
 export { generateActionsForStore, collection_all, single_all } from './actions';
 export { generateReducersForStore, generateSingle } from './reducers';
 export { nodeToType, analyzeStructure, clearNodes } from './structure';
-export { cleanInitialState } from './initialState';
 export { toSingularAction } from './singular';
 
 export { NodeType } from './types/types';

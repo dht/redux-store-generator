@@ -3,7 +3,11 @@ export {
     generateActionTypesForStore,
 } from './actionTypes';
 export { generateActionsForStore, collection_all, single_all } from './actions';
-export { generateReducersForStore, generateSingle } from './reducers';
+export {
+    generateReducersForStore,
+    generateSingle,
+    generateCollection,
+} from './reducers';
 export { nodeToType, analyzeStructure, clearNodes } from './structure';
 export { toSingularAction } from './singular';
 

@@ -42,7 +42,10 @@ export const single_getAction = (nodeName: string, extra?: Json) => () => {
     };
 };
 
-export const single_all = <T>(nodeName: string, extra?: Json): SingleBag<T> => {
+export const single_all = <T extends Json>(
+    nodeName: string,
+    extra?: Json
+): SingleBag<T> => {
     return {
         get: single_getAction(nodeName, extra),
         setAll: single_setAction(nodeName, extra),
@@ -104,7 +107,10 @@ export const queue_clearAction = (nodeName: string, extra?: Json) => () => {
     };
 };
 
-export const queue_all = <T>(nodeName: string, extra?: Json): QueueBag<T> => {
+export const queue_all = <T extends Json>(
+    nodeName: string,
+    extra?: Json
+): QueueBag<T> => {
     return {
         get: queue_getAction(nodeName, extra),
         setAll: queue_setAction(nodeName, extra),
@@ -190,7 +196,7 @@ export const collection_setManyAction =
         };
     };
 
-export const collection_all = <T>(
+export const collection_all = <T extends Json>(
     nodeName: string,
     extra?: Json
 ): CollectionBag<T> => {
@@ -329,6 +335,32 @@ export const groupedList_popItem =
         };
     };
 
+export const groupedList_deleteItem =
+    (nodeName: string, extra?: Json) => (id: string, itemId: string) => {
+        return {
+            type: `DELETE_${nodeName.toUpperCase()}_ITEM`,
+            payload: {
+                id,
+                itemId,
+            },
+            ...extra,
+        };
+    };
+
+export const groupedList_patchItem =
+    (nodeName: string, extra?: Json) =>
+    (id: string, itemId: string, payload: Json) => {
+        return {
+            type: `PATCH_${nodeName.toUpperCase()}_ITEM`,
+            payload: {
+                id,
+                itemId,
+                ...payload,
+            },
+            ...extra,
+        };
+    };
+
 export const groupedList_clearItems =
     (nodeName: string, extra?: Json) => (id: string) => {
         return {
@@ -352,7 +384,7 @@ export const groupedList_pushManyItems =
         };
     };
 
-export const groupedList_all = <T, V>(
+export const groupedList_all = <T extends Json, V extends Json>(
     nodeName: string,
     extra?: Json
 ): GroupedListBag<T, V> => {
@@ -368,6 +400,8 @@ export const groupedList_all = <T, V>(
         getItems: groupedList_getItems(nodeName, extra),
         setItems: groupedList_setItems(nodeName, extra),
         pushItem: groupedList_pushItem(nodeName, extra),
+        patchItem: groupedList_patchItem(nodeName, extra),
+        deleteItem: groupedList_deleteItem(nodeName, extra),
         popItem: groupedList_popItem(nodeName, extra),
         clearItems: groupedList_clearItems(nodeName, extra),
         pushManyItems: groupedList_pushManyItems(nodeName, extra),

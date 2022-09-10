@@ -187,7 +187,11 @@ describe('reducers', () => {
 
         // setAll
         payload = {
-            '1': { id: '1', title: title1, items: [{ id: '', isMe: true }] },
+            '1': {
+                id: '1',
+                title: title1,
+                items: [{ id: '', timestamp: 1, content: '', isMe: true }],
+            },
         };
         action = actions.setAll(payload);
         nextState = reducer(chats, action);

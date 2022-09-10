@@ -38,17 +38,20 @@ export type Action = {
 };
 
 export type ActionCreatorId = (id: string) => Action;
-export type ActionCreatorPayload<T extends {}> = (payload: T) => Action;
-export type ActionCreatorIdAndPayload<T extends {}> = (id: string, payload: T) => Action; // prettier-ignore
+export type ActionCreatorPayload<T extends Json> = (payload: T) => Action;
+export type ActionCreatorIdAndPayload<T extends Json> = (id: string, payload: T) => Action; // prettier-ignore
 export type ActionCreatorEmpty = () => Action;
 
-export type SingleBag<T> = {
+export type ActionCreatorIdAndItemId = (id: string, itemId: string) => Action;
+export type ActionCreatorIdAndItemIdAndPayload<T extends Json> = (id: string, itemId: string, payload: T) => Action; // prettier-ignore
+
+export type SingleBag<T extends Json> = {
     get: ActionCreatorEmpty;
     patch: ActionCreatorPayload<Partial<T>>;
     setAll: ActionCreatorPayload<T>;
 };
 
-export type QueueBag<T> = {
+export type QueueBag<T extends Json> = {
     get: ActionCreatorPayload<Record<string, any>>;
     setAll: ActionCreatorPayload<T[]>;
     push: ActionCreatorPayload<T>;
@@ -57,7 +60,7 @@ export type QueueBag<T> = {
     pushMany: ActionCreatorPayload<T[]>;
 };
 
-export type CollectionBag<T> = {
+export type CollectionBag<T extends Json> = {
     get: ActionCreatorPayload<Record<string, any>>;
     setAll: ActionCreatorPayload<Record<string, T>>;
     add: ActionCreatorPayload<Partial<T>>;
@@ -67,7 +70,7 @@ export type CollectionBag<T> = {
     setMany: ActionCreatorPayload<Record<string, T>>;
 };
 
-export type GroupedListBag<T, V> = {
+export type GroupedListBag<T extends Json, V extends Json> = {
     get: ActionCreatorPayload<Record<string, any>>;
     setAll: ActionCreatorPayload<Record<string, T>>;
     add: ActionCreatorPayload<Partial<T>>;
@@ -80,6 +83,8 @@ export type GroupedListBag<T, V> = {
     setItems: ActionCreatorIdAndPayload<V[]>;
     pushItem: ActionCreatorIdAndPayload<V>;
     popItem: ActionCreatorId;
+    deleteItem: ActionCreatorIdAndItemId;
+    patchItem: ActionCreatorIdAndItemIdAndPayload<V>;
     clearItems: ActionCreatorId;
     pushManyItems: ActionCreatorIdAndPayload<V[]>;
 };
@@ -100,7 +105,7 @@ export type StoreActions<StoreStructure> = {
         : StoreStructure[K] extends GroupedListNode
         ? GroupedListBag<InferGroupedListType<StoreStructure[K]>, any>
         : StoreStructure[K] extends CollectionNode
-        ? CollectionBag<InferCollectionType<StoreStructure[K]>>
+        ? CollectionBag<InferCollectionType<StoreStructure[K]>> // @ts-expect-error
         : SingleBag<StoreStructure[K]>;
 };
 
@@ -176,6 +181,7 @@ export type ApiVerb =
     | 'getItems'
     | 'setItems'
     | 'pushItem'
+    | 'deleteItem'
     | 'popItem'
     | 'clearItems'
     | 'pushManyItems';

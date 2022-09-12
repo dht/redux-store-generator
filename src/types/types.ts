@@ -181,6 +181,7 @@ export type ApiVerb =
     | 'getItems'
     | 'setItems'
     | 'pushItem'
+    | 'patchItem'
     | 'deleteItem'
     | 'popItem'
     | 'clearItems'

@@ -37,8 +37,8 @@
     "types": "./dist/dts/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/store-auth.es.js",
-            "require": "./dist/store-auth.umd.js"
+            "import": "./dist/redux-store-generator.es.js",
+            "require": "./dist/redux-store-generator.js"
         }
     }
 }

@@ -65,6 +65,8 @@ export const groupedList_actionTypes = (
         setItems: `SET_${nodeName.toUpperCase()}_ITEMS`,
         pushItem: `PUSH_${nodeName.toUpperCase()}_ITEM`,
         popItem: `POP_${nodeName.toUpperCase()}_ITEM`,
+        deleteItem: `DELETE_${nodeName.toUpperCase()}_ITEM`,
+        patchItem: `PATCH_${nodeName.toUpperCase()}_ITEM`,
         clearItems: `CLEAR_${nodeName.toUpperCase()}_ITEMS`,
         pushManyItems: `PUSH_MANY_${nodeName.toUpperCase()}_ITEMS`,
     };

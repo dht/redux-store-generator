@@ -90,28 +90,31 @@ export const generateCollection = (nodeName: string) => {
 };
 
 export const generateGroupedList = (nodeName: string) => {
-    const listItems = (state: any[], action: Action) => {
+    const listItems = (state: any[] = [], action: Action) => {
         let newState;
 
         const { itemId, items = [] } = action.payload || {};
         const data = { ...action.payload };
-        delete data['itemId'];
 
         switch (action.type) {
             case `SET_${nodeName.toUpperCase()}_ITEMS`:
                 return items;
             case `PUSH_${nodeName.toUpperCase()}_ITEM`:
             case `PUSH_MANY_${nodeName.toUpperCase()}_ITEMS`:
-                return [...state, ...items];
+                const ids = items.map((i: any) => i.id);
+                const output = [...state].filter((i) => !ids.includes(i.id));
+                output.push(...items);
+                return output;
             case `POP_${nodeName.toUpperCase()}_ITEM`:
                 newState = [...state];
                 newState.pop();
                 return newState;
-            case `DELETE${nodeName.toUpperCase()}_ITEM`:
+            case `DELETE_${nodeName.toUpperCase()}_ITEM`:
                 newState = [...state];
                 return newState.filter((i) => i.id !== itemId);
-            case `PATCH${nodeName.toUpperCase()}_ITEM`:
+            case `PATCH_${nodeName.toUpperCase()}_ITEM`:
                 newState = [...state];
+                delete data['id'];
                 return newState.map((i) => {
                     return i.id !== itemId
                         ? i

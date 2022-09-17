@@ -146,6 +146,8 @@ export type GroupedListActionTypesBag = {
     setItems: string;
     pushItem: string;
     popItem: string;
+    deleteItem: string;
+    patchItem: string;
     clearItems: string;
     pushManyItems: string;
 };

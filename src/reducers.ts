@@ -7,7 +7,7 @@ export const generateSingle =
     (state: Record<string, any> = {}, action: Action) => {
         switch (action.type) {
             case `SET_${nodeName.toUpperCase()}`:
-                return action.payload;
+                return { ...action.payload };
             case `PATCH_${nodeName.toUpperCase()}`:
                 return { ...state, ...action.payload };
             default:
@@ -22,7 +22,7 @@ export const generateQueue =
 
         switch (action.type) {
             case `SET_${nodeName.toUpperCase()}`:
-                return action.payload;
+                return { ...action.payload };
             case `PUSH_${toSingularAction(nodeName)}`:
                 return [...state, action.payload];
             case `POP_${toSingularAction(nodeName)}`:
@@ -43,7 +43,7 @@ export const generateCollection = (nodeName: string) => {
     const item = (state: Record<string, any> = {}, action: Action) => {
         switch (action.type) {
             case `SET_${toSingularAction(nodeName)}`:
-                return action.payload;
+                return { ...action.payload };
             case `PATCH_${toSingularAction(nodeName)}`:
                 return {
                     ...state,
@@ -136,7 +136,7 @@ export const generateGroupedList = (nodeName: string) => {
     const item = (state: Record<string, any> = {}, action: Action) => {
         switch (action.type) {
             case `SET_${toSingularAction(nodeName)}`:
-                return action.payload;
+                return { ...action.payload };
             case `PATCH_${toSingularAction(nodeName)}`:
                 return {
                     ...state,
@@ -165,7 +165,7 @@ export const generateGroupedList = (nodeName: string) => {
 
         switch (action.type) {
             case `SET_${nodeName.toUpperCase()}`:
-                return action.payload;
+                return { ...action.payload };
             case `SET_${toSingularAction(nodeName)}`:
             case `PATCH_${toSingularAction(nodeName)}`:
             case `SET_${nodeName.toUpperCase()}_ITEMS`:

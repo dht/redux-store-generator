@@ -57,24 +57,26 @@ export const generateCollection = (nodeName: string) => {
     const items = (state: Record<string, any> = {}, action: Action) => {
         let newState;
 
+        const { id } = action;
+
         switch (action.type) {
             case `SET_${nodeName.toUpperCase()}`:
                 return action.payload;
             case `SET_${toSingularAction(nodeName)}`:
             case `PATCH_${toSingularAction(nodeName)}`:
-                if (!action.payload || !action.payload.id) {
+                if (!id) {
                     return state;
                 }
                 return {
                     ...state,
-                    [action.payload.id]: item(state[action.payload.id], action),
+                    [id]: item(state[id], action),
                 };
             case `DELETE_${toSingularAction(nodeName)}`:
-                if (!action.payload || !action.payload.id) {
+                if (!id) {
                     return state;
                 }
                 newState = { ...state };
-                delete newState[action.payload.id];
+                delete newState[id];
                 return newState;
             case `SET_MANY_${nodeName.toUpperCase()}`:
                 return {
@@ -93,7 +95,8 @@ export const generateGroupedList = (nodeName: string) => {
     const listItems = (state: any[] = [], action: Action) => {
         let newState;
 
-        const { itemId, items = [] } = action.payload || {};
+        const { itemId } = action;
+        const { items = [] } = action.payload || {};
         const data = { ...action.payload };
 
         switch (action.type) {
@@ -158,6 +161,8 @@ export const generateGroupedList = (nodeName: string) => {
     const items = (state: Record<string, any> = {}, action: Action) => {
         let newState;
 
+        const { id } = action;
+
         switch (action.type) {
             case `SET_${nodeName.toUpperCase()}`:
                 return action.payload;
@@ -170,19 +175,19 @@ export const generateGroupedList = (nodeName: string) => {
             case `PATCH_${nodeName.toUpperCase()}_ITEM`:
             case `CLEAR_${nodeName.toUpperCase()}_ITEMS`:
             case `PUSH_MANY_${nodeName.toUpperCase()}_ITEMS`:
-                if (!action.payload || !action.payload.id) {
+                if (!id) {
                     return state;
                 }
                 return {
                     ...state,
-                    [action.payload.id]: item(state[action.payload.id], action),
+                    [id]: item(state[id], action),
                 };
             case `DELETE_${toSingularAction(nodeName)}`:
-                if (!action.payload || !action.payload.id) {
+                if (!id) {
                     return state;
                 }
                 newState = { ...state };
-                delete newState[action.payload.id];
+                delete newState[id];
                 return newState;
             case `SET_MANY_${nodeName.toUpperCase()}`:
                 return {

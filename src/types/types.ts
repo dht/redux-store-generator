@@ -26,6 +26,8 @@ export type StoreNodeTypes = Record<string, NodeType>;
 export type Action = {
     type: string;
     payload?: Record<string, any>;
+    id?: string;
+    itemId?: string;
     silent?: boolean;
     '@@redux-saga/SAGA_ACTION'?: boolean;
     '@@redux-store-generator/AUTO_GENERATED_ACTION'?: boolean;

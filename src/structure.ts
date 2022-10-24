@@ -15,7 +15,7 @@ const isGroupedListNode = (value: any): boolean => {
     if (typeof value !== 'object') return false;
     const firstKey = Object.keys(value).pop() as any;
     const firstValue = firstKey ? value[firstKey] : null;
-    const { items } = firstValue || {};
+    const { items } = firstValue ?? {};
     return isCollectionNode(value) && Array.isArray(items);
 };
 

@@ -11,7 +11,7 @@ export const generateSingle =
             case `PATCH_${nodeName.toUpperCase()}`:
                 return { ...state, ...action.payload };
             default:
-                return state || {};
+                return state ?? {};
         }
     };
 
@@ -32,10 +32,10 @@ export const generateQueue =
             case `CLEAR_${nodeName.toUpperCase()}`:
                 return [];
             case `PUSH_MANY_${nodeName.toUpperCase()}`:
-                const { items = [] } = action.payload || {};
-                return [...state, ...(items || [])];
+                const { items = [] } = action.payload ?? {};
+                return [...state, ...(items ?? [])];
             default:
-                return state || [];
+                return state ?? [];
         }
     };
 
@@ -84,7 +84,7 @@ export const generateCollection = (nodeName: string) => {
                     ...action.payload,
                 };
             default:
-                return state || {};
+                return state ?? {};
         }
     };
 
@@ -96,7 +96,7 @@ export const generateGroupedList = (nodeName: string) => {
         let newState;
 
         const { itemId } = action;
-        const { items = [] } = action.payload || {};
+        const { items = [] } = action.payload ?? {};
         const data = { ...action.payload };
 
         switch (action.type) {
@@ -129,7 +129,7 @@ export const generateGroupedList = (nodeName: string) => {
             case `CLEAR_${nodeName.toUpperCase()}_ITEMS`:
                 return [];
             default:
-                return state || [];
+                return state ?? [];
         }
     };
 
@@ -195,7 +195,7 @@ export const generateGroupedList = (nodeName: string) => {
                     ...action.payload,
                 };
             default:
-                return state || {};
+                return state ?? {};
         }
     };
 

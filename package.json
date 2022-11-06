@@ -38,7 +38,7 @@
     "exports": {
         ".": {
             "import": "./dist/redux-store-generator.es.js",
-            "require": "./dist/redux-store-generator.js"
+            "require": "./dist/redux-store-generator.umd.js"
         }
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "redux-store-generator",
-    "version": "0.9.87",
+    "version": "0.9.88",
     "description": "auto-generates a redux store",
     "license": "MIT",
     "scripts": {

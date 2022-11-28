@@ -1,0 +1,5 @@
+Unused devDependencies
+* @types/jest
+Missing dependencies
+* redux-store-generator: ./examples/basic.ts
+* redux: ./examples/basic.ts

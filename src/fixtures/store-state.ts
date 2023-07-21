@@ -1,6 +1,11 @@
 import { StoreStructure } from '../types/types';
 
-export type AppState = { isLoading: boolean; email?: string };
+export type AppState = {
+    isLoading: boolean;
+    isSaving: boolean;
+    email?: string;
+};
+
 export type Product = { id: string; title: string };
 export type Products = Record<string, Product>;
 export type Log = { id: string };
@@ -20,6 +25,7 @@ export interface MyStore extends StoreStructure {
 export const state: MyStore = {
     appState: {
         isLoading: true,
+        isSaving: true,
     },
     products: {
         '1': {

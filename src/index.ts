@@ -2,35 +2,39 @@ export {
     generateActionTypesDictionaryForStore,
     generateActionTypesForStore,
 } from './actionTypes';
-export { generateActionsForStore, collection_all, single_all } from './actions';
-export { generateReducersForStore, generateSingle } from './reducers';
-export { nodeToType, analyzeStructure, clearNodes } from './structure';
-export { cleanInitialState } from './initialState';
+export { collection_all, generateActionsForStore, single_all } from './actions';
+export { clearStore } from './clear';
+export { initialFetch } from './getAll';
+
+export {
+    generateCollection,
+    generateReducersForStore,
+    generateSingle,
+} from './reducers';
 export { toSingularAction } from './singular';
-
+export { analyzeStructure, clearNodes, nodeToType } from './structure';
 export { NodeType } from './types/types';
-
 export type {
-    ApiInfo,
-    ApiInfoPerType,
-    ApiVerb,
     Action,
     ActionBag,
     ActionCreatorEmpty,
     ActionCreatorId,
     ActionCreatorIdAndPayload,
     ActionCreatorPayload,
+    ApiInfo,
+    ApiInfoPerType,
+    ApiVerb,
     CollectionBag,
     CollectionNode,
     Item,
     Json,
-    SingleBag,
-    SingleNode,
-    StoreNode,
-    StoreStructure,
-    StoreActions,
-    StoreNodeTypes,
-    Value,
     QueueBag,
     QueueNode,
+    SingleBag,
+    SingleNode,
+    StoreActions,
+    StoreNode,
+    StoreNodeTypes,
+    StoreStructure,
+    Value,
 } from './types/types';
